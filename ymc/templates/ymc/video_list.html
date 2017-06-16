@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <title>YMCMB</title>
+    </head>
+    <body>
+        {% for video in videos %}
+        <div>
+            <p>publicado: {{ video.fecha_publicacion }}</p>
+            <h1><a href="">{{ video.nombre }}</a></h1>
+            <p>{{ video.descripcion|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
+
+    </body>
+</html>
