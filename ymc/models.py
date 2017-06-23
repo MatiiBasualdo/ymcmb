@@ -11,23 +11,27 @@ class Usuario(models.Model):
         'contrasena': forms.PasswordInput(),
     }
     email = models.EmailField(max_length=254)
-    video_asignado = models.ForeignKey('Video')
 
     def __str__(self):
         return self.nombre
 
 class Video(models.Model):
+    usuario_asignado = models.ForeignKey('Usuario', default=None)
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
-    comentario = models.TextField()
     categoria = models.CharField(max_length=200)
     duracion = models.DurationField()
     puntaje = models.IntegerField()
     cant_clicks = models.IntegerField()
-    cant_comentarios = models.IntegerField()
     publicidad_asignada = models.ForeignKey('Publicidad')
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
 
+class Comentario(models.Model):
+    autor = models.ForeignKey('Usuario', default=None)
+    contenido = models.TextField()
+    cant_likes = models.IntegerField()
+    video_asignado = models.ForeignKey('Video', default=None)
+    
     def __str__(self):
         return self.nombre
 
