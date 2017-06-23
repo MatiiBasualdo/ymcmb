@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -148,7 +150,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 
       {% for video in videos %}
       <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <img src="{% static video.usuario_asignado.avatar %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">1 min</span>
         <h4>{{ video.usuario_asignado }}</h4><br>
         <hr class="w3-clear">

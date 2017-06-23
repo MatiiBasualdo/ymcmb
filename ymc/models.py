@@ -11,6 +11,7 @@ class Usuario(models.Model):
         'contrasena': forms.PasswordInput(),
     }
     email = models.EmailField(max_length=254)
+    avatar = models.FileField(upload_to='avatars/%Y/%m/%d/', default=None)
 
     def __str__(self):
         return self.nombre
@@ -19,13 +20,16 @@ class Video(models.Model):
     usuario_asignado = models.ForeignKey('Usuario', default=None)
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
-    categoria = models.CharField(max_length=200)
+    categoria = models.ForeignKey('Categoria', default=None)
     duracion = models.DurationField()
     puntaje = models.IntegerField()
     cant_clicks = models.IntegerField()
     publicidad_asignada = models.ForeignKey('Publicidad')
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.nombre
+    
 class Comentario(models.Model):
     autor = models.ForeignKey('Usuario', default=None)
     contenido = models.TextField()
