@@ -105,5 +105,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Rutas para poder subir archivos
 
-MEDIA_ROOT = 'ymc/static/uploaded_media/'
+MEDIA_ROOT = '/home/alumno/ymcmb/ymc/static/uploaded_media/'
 MEDIA_URL =  'uploaded_media/'

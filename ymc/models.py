@@ -29,7 +29,7 @@ class Video(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
 class Comentario(models.Model):
     autor = models.ForeignKey('Usuario', default=None)
     contenido = models.TextField()
