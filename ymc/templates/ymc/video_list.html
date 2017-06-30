@@ -104,22 +104,13 @@
             </div>
             <br>
 
-            <!-- Interests -->
+            <!-- Categorias -->
             <div class="w3-card-2 w3-round w3-white w3-hide-small">
                 <div class="w3-container">
-                    <p>Intereses</p>
-                    <p>
-                        <span class="w3-tag w3-small w3-theme-d5">Noticias</span>
-                        <span class="w3-tag w3-small w3-theme-d4">YMCMB</span>
-                        <span class="w3-tag w3-small w3-theme-d3">Etiquetas</span>
-                        <span class="w3-tag w3-small w3-theme-d2">Juegos</span>
-                        <span class="w3-tag w3-small w3-theme-d1">Amigos</span>
-                        <span class="w3-tag w3-small w3-theme">Juegos</span>
-                        <span class="w3-tag w3-small w3-theme-l1">Amigos</span>
-                        <span class="w3-tag w3-small w3-theme-l2">Comida</span>
-                        <span class="w3-tag w3-small w3-theme-l3">Diseño</span>
-                        <span class="w3-tag w3-small w3-theme-l4">Arte</span>
-                        <span class="w3-tag w3-small w3-theme-l5">Fotos</span>
+                    <p>Categorias</p>
+                    <p> {% for categoria in categoria_list %}
+                        <span class="w3-tag w3-small w3-theme-l5">{{ categoria.nombre }}</span>
+                        {% endfor %}
                     </p>
                 </div>
             </div>
@@ -153,12 +144,16 @@
             </div>
 
             {% for video in videos %}
-            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-                <img src="{% get_media_prefix %}{{ video.usuario_asignado.avatar }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-        <h4>{{ video.usuario_asignado }}</h4><br>
-        <hr class="w3-clear">
-        <p>{{ video.descripcion|linebreaksbr }}</p>
+            <div class="w3-container w3-card-2 w3-round w3-margin"><br>
+                <div class="w3-container w3-white w3-left">
+                    <img src="{% get_media_prefix %}{{ video.usuario_asignado.avatar }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <br>
+                    <h6 class="w3-left w3-center w3-margin-right">{{ video.usuario_asignado.nombre|linebreaks}}{{video.usuario_asignado.apellido }}</h6>
+                </div>
+                <h3>{{ video.nombre }}</h3>
+                <span class="w3-right"{{ video.fecha_publicacion }}</span>
+        <hr class="w3-margin-right">
+        <p class="w3-margin-right w3-container">{{ video.descripcion|linebreaksbr }}</p>
         <div class="w3-row-padding" style="margin:0 -16px">
               <div class="w3-centered">
                   <img src="{% static "media/placeholder.jpg" %}" style="width: 100%" align="middle" alt="Placeholder de Video." class="w3-margin-bottom">
