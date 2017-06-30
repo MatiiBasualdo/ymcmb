@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Django File Upload Example</title>
+    </head>
+
+    <body>
+        <!-- List of uploaded documents -->
+        {% if videos %}
+        <ul>
+            {% for video in videos %}
+            <li><a href="{{ video.archivo.url }}">{{ video.archivo.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No hay videos.</p>
+        {% endif %}
+
+        <!-- Upload formulario. Note enctype attribute! -->
+        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ formulario.non_field_errors }}</p>
+
+            <p>{{ formulario.nuevo_archivo.label_tag }} {{ formulario.nuevo_archivo.help_text }}</p>
+
+            <p>
+                {{ formulario.nuevo_archivo.errors }}
+                {{ formulario.nuevo_archivo }}
+            </p>
+
+            <p><input type="submit" value="Upload"/></p>
+        </form>
+    </body>
+
+</html>

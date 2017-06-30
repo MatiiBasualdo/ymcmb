@@ -19,9 +19,16 @@ class Video(models.Model):
     cant_clicks = models.IntegerField()
     publicidad_asignada = models.ForeignKey('Publicidad')
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
+    archivo = models.FileField(upload_to='videos/%Y/%m/%d', default=None)
 
     def __str__(self):
         return self.nombre
+
+class VideoFormulario(forms.Form):
+    nuevo_archivo = forms.FileField(
+        label='Selecciona un archivo...',
+        help_text='tamaño máximo 42mb',
+    )
 
 class Comentario(models.Model):
     autor = models.ForeignKey(User, default=None)
@@ -60,4 +67,3 @@ class Publicidad(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-

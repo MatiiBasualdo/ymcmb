@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ymc',
+    'avatar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,8 +106,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Rutas para poder subir archivos
 
-MEDIA_ROOT = '/home/alumno/ymcmb/ymc/static/uploaded_media/'
+USER_ENV = os.environ.get('HOME')
+
+MEDIA_ROOT = os.path.join(USER_ENV, 'ymcmb/ymc/static/uploaded_media/')
 MEDIA_URL =  '/static/uploaded_media/'
+
 
 # Redireccion para el login
 
