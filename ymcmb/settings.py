@@ -107,3 +107,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = '/home/alumno/ymcmb/ymc/static/uploaded_media/'
 MEDIA_URL =  '/static/uploaded_media/'
+
+# Redireccion para el login
+
+LOGIN_REDIRECT_URL = '/'
+
+# Coso para que tome al Usuario como parte de User por defecto de Django
+
+AUTH_PROFILE_MODULE = 'ymc.PerfilUsuario'

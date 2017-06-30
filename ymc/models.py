@@ -1,23 +1,16 @@
 from django import forms
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=200)
-    apellido = models.CharField(max_length=200)
-    usuario = models.CharField(max_length=200)
-    contrasena = forms.CharField(widget=forms.PasswordInput)
-    widgets = {
-        'contrasena': forms.PasswordInput(),
-    }
-    email = models.EmailField(max_length=254)
-    avatar = models.FileField(upload_to='avatars/%Y/%m/%d/', default=None)
+class PerfilUsuario(models.Model):
+    avatar = models.ImageField(upload_to='avatars/%Y/%m/%d/', default=None)
 
     def __str__(self):
         return self.nombre
 
 class Video(models.Model):
-    usuario_asignado = models.ForeignKey('Usuario', default=None)
+    usuario_asignado = models.ForeignKey(User, default=None)
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
     categoria = models.ForeignKey('Categoria', default=None)
@@ -31,7 +24,7 @@ class Video(models.Model):
         return self.nombre
 
 class Comentario(models.Model):
-    autor = models.ForeignKey('Usuario', default=None)
+    autor = models.ForeignKey(User, default=None)
     contenido = models.TextField()
     cant_likes = models.IntegerField()
     video_asignado = models.ForeignKey('Video', default=None)

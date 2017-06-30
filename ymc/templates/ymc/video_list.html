@@ -1,11 +1,14 @@
 {% extends 'ymc/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
+{% block videos %}
 {% for video in videos %}
 <div class="w3-container w3-card-2 w3-round w3-margin"><br>
   <div class="w3-container w3-left">
-    <img src="{% get_media_prefix %}{{ video.usuario_asignado.avatar }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+    <img src="{% get_media_prefix %}{{ video.usuario_asignado.get_profile.avatar }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
     <br>
-    <h6 class="w3-left w3-center w3-margin-right">{{ video.usuario_asignado.nombre|linebreaks}}{{video.usuario_asignado.apellido }}</h6>
+    <h6 class="w3-left w3-center w3-margin-right">{{ video.usuario_asignado.first_name|linebreaks}}{{video.usuario_asignado.last_name }}</h6>
   </div>
   <h3>{{ video.nombre }}</h3>
   <span class="w3-right"{{ video.fecha_publicacion }}</span>
@@ -20,3 +23,4 @@
 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="glyphicon glyphicon-comment"></i>  Comentar</button>
 </div>
 {% endfor %}
+{% endblock %}

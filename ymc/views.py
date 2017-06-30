@@ -5,5 +5,5 @@ from .models import *
 def video_list(request):
     videos = Video.objects.all()
     categorias = Categoria.objects.all()
-    usuarios = Usuario.objects.all()
+    usuarios = User.objects.all()
     return render(request, 'ymc/video_list.html', {'usuarios': usuarios, 'categorias': categorias, 'videos': videos})
