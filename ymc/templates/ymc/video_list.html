@@ -58,7 +58,7 @@
                     <p class="w3-center"><img src="{% get_media_prefix %}{{ usuario.avatar }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                     {% endfor %}
                     <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+                    <p><i class="glyphicon glyphicon- w3-margin-right w3-text-theme"></i> Designer, UI</p>
                     <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
                     <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
                 </div>
@@ -108,7 +108,7 @@
             <div class="w3-card-2 w3-round w3-white w3-hide-small">
                 <div class="w3-container">
                     <p>Categorias</p>
-                    <p> {% for categoria in categoria_list %}
+                    <p> {% for categoria in categorias %}
                         <span class="w3-tag w3-small w3-theme-l5">{{ categoria.nombre }}</span>
                         {% endfor %}
                     </p>
@@ -152,65 +152,65 @@
                 </div>
                 <h3>{{ video.nombre }}</h3>
                 <span class="w3-right"{{ video.fecha_publicacion }}</span>
-        <hr class="w3-margin-right">
-        <p class="w3-margin-right w3-container">{{ video.descripcion|linebreaksbr }}</p>
-        <div class="w3-row-padding" style="margin:0 -16px">
-              <div class="w3-centered">
-                  <img src="{% static "media/placeholder.jpg" %}" style="width: 100%" align="middle" alt="Placeholder de Video." class="w3-margin-bottom">
-              </div>
+                <hr class="w3-margin-right">
+                <p class="w3-margin-right w3-container">{{ video.descripcion|linebreaksbr }}</p>
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-centered">
+                        <img src="{% static "media/placeholder.jpg" %}" style="width: 100%" align="middle" alt="Placeholder de Video." class="w3-margin-bottom">
+                    </div>
+                </div>
+                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+            </div>
+            {% endfor %}
+
+
+            <!-- End Middle Column -->
         </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-      </div>
-      {% endfor %}
 
+        <!-- Right Column -->
+        <div class="w3-col m2">
+            <div class="w3-card-2 w3-round w3-white w3-center">
+                <div class="w3-container">
+                    <p>Eventos Proximos:</p>
+                    <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+                    <p><strong>Holiday</strong></p>
+                    <p>Friday 15:00</p>
+                    <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+                </div>
+            </div>
+            <br>
 
-    <!-- End Middle Column -->
+            <div class="w3-card-2 w3-round w3-white w3-center">
+                <div class="w3-container">
+                    <p>Solicitud de Amigo</p>
+                    <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
+                    <span>Jane Doe</span>
+                    <div class="w3-row w3-opacity">
+                        <div class="w3-half">
+                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                        </div>
+                        <div class="w3-half">
+                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
     </div>
 
-    <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-card-2 w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>Eventos Proximos:</p>
-          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Holiday</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-        </div>
-      </div>
-      <br>
-
-      <div class="w3-card-2 w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>Solicitud de Amigo</p>
-          <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
-          <div class="w3-row w3-opacity">
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-            </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-
-    <!-- End Right Column -->
-    </div>
-
-    <!-- End Grid -->
-  </div>
-
-<!-- End Page Container -->
+    <!-- End Page Container -->
 </div>
 <br>
 
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>Footer</h5>
+    <h5>Footer</h5>
 </footer>
 
 <footer class="w3-container w3-theme-d5">
@@ -243,7 +243,7 @@
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../../static/css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
