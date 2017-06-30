@@ -35,7 +35,7 @@ class Comentario(models.Model):
     contenido = models.TextField()
     cant_likes = models.IntegerField()
     video_asignado = models.ForeignKey('Video', default=None)
-    
+
     def __str__(self):
         return self.nombre
 
@@ -47,7 +47,7 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
     puntaje = models.IntegerField()
-    
+
     def __str__(self):
         return self.nombre
 
