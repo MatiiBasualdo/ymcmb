@@ -10,18 +10,18 @@
         <img src="{% avatar_url video.usuario_asignado.username 200 %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <h6 class="w3-left w3-center">{{ video.usuario_asignado.first_name|linebreaks }}{{ video.usuario_asignado.last_name }}</h6>
         <br>
-    
     </div>
     <span class="w3-right">{{ video.fecha_publicacion }}</span>
   <h3>{{ video.nombre }}</h3>
   <hr class="w3-margin-right">
-<p class="w3-margin-right w3-container">{{ video.descripcion|linebreaksbr }}</p>
 <div class="w3-row-padding" style="margin:0 -16px">
     <div class="w3-centered w3-center w3-container">
         <video id="vid" width="640" height="360" controls="controls">
             <source src="{% get_media_prefix %}{{ video.archivo.name }}" type="video/mp4"></source>
         </video>
     </div>
+    <p></p>
+    <p class="w3-margin-right w3-container">{{ video.descripcion|linebreaksbr }}</p>
 </div>
 <hr>
 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="glyphicon glyphicon-heart"></i>  Me Gusta</button>
