@@ -86,13 +86,11 @@
                     <div id="Demo3" class="w3-hide w3-container">
                         <div class="w3-row-padding">
                             <br>
-                            <li>
                                 {% for video in videos %}
-                                <div class="w3-half">
-                                    <a href="{{ video.archivo.url }}" style="width:100%" class="w3-margin-bottom">{{ video.archivo.name }}</a>
+                                <div>
+                                    <button class="w3-button w3-theme-l4"><a href="{{ video.archivo.url }}" style="width:100%" class="w3-margin-bottom">{{ video.nombre }}</a></button>
                                 </div>
                                 {% endfor %}
-                            </li>
                         </div>
                     </div>
                 </div>
@@ -130,7 +128,7 @@
                 <div class="w3-col m12">
                     <div class="w3-card-2 w3-round w3-white">
                         <div class="w3-container w3-padding">
-                            <h6 class="w3-opacity">Publica un video</h6>
+                            <button class="w3-button w3-theme-l4"><a href="{% url 'list' %}">Publica un video</a></button>
 	                          {% block subir_vid %}
 	                          {% endblock %}
                         </div>

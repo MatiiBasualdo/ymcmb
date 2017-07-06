@@ -8,7 +8,6 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import *
 
-
 def video_list(request):
     videos = Video.objects.all()
     categorias = Categoria.objects.all()
@@ -34,6 +33,4 @@ def list(request):
     # Render list page with the documents and the form
     return render(request,
         'video_upload/list.html',
-        {'videos': videos, 'formulario': formulario},
-                  request
-    )
+        {'videos': videos, 'formulario': formulario})
