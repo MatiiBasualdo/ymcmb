@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -13,6 +13,12 @@ def video_list(request):
     categorias = Categoria.objects.all()
     usuarios = User.objects.all()
     return render(request, 'ymc/video_list.html', {'usuarios': usuarios, 'categorias': categorias, 'videos': videos})
+
+def categoria_list(request, cat):
+        videos = Video.objects.all().filter(categoria=cat)
+        categorias = Categoria.objects.all()
+        usuarios = User.objects.all()
+        return render(request, 'ymc/video_list.html', {'usuarios': usuarios, 'categorias': categorias, 'videos': videos})
 
 def list(request):
     # Maneja la subida de archivos

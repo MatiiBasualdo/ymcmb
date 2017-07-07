@@ -21,7 +21,7 @@
         <div class="w3-top">
             <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-                <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" aria-hidden="true"><img src="../../static/media/ymcmb-logo.jpg"></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" aria-hidden="true"><img src="../../static/media/ymcmb-logo.jpg"></a>
                 <div class="w3-dropdown-hover w3-hide-small">
                     <button class="w3-button w3-padding-large" title="Notificaciones"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
                     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
@@ -34,9 +34,8 @@
                 <div class="w3-dropdown-hover w3-hide-small w3-right">
                     <button class="w3-button w3-padding-large" title="Mi Cuenta"><img src="{% avatar_url user 300 %}" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></button>
                     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;margin-left:-227px">
-                        <a href="#" class="w3-bar-item w3-button">One new friend request</a>
-                        <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-                        <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
+                        <a href="/avatar/change" class="w3-bar-item w3-button">Cambiar Avatar</a>
+                        <a href="/logout" class="w3-bar-item w3-button">Cerrar Sesion</a>
                     </div>
                 </div>
             </div>
@@ -64,9 +63,6 @@
                     <p class="w3-center"><img src="{% avatar_url user 200 %}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                     {% endif %}
                     <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
                 </div>
             </div>
             <br>
@@ -102,7 +98,7 @@
                 <div class="w3-container">
                     <p>Categorias</p>
                     <p> {% for categoria in categorias %}
-                        <span class="w3-tag w3-small w3-theme-l5">{{ categoria.nombre }}</span>
+                        <span class="w3-tag w3-small w3-theme-l5"><a href="{% url 'ymc.views.video_categoria' cat=categoria.pk %}">{{ categoria.nombre }}</a></span>
                         {% endfor %}
                     </p>
                 </div>
@@ -128,7 +124,7 @@
                 <div class="w3-col m12">
                     <div class="w3-card-2 w3-round w3-white">
                         <div class="w3-container w3-padding">
-                            <button class="w3-button w3-theme-l4"><a href="{% url 'list' %}">Publica un video</a></button>
+                            <button id="redirect" class="w3-button w3-theme-l4">Publica un video</button>
 	                          {% block subir_vid %}
 	                          {% endblock %}
                         </div>
@@ -148,29 +144,14 @@
         <div class="w3-col m2">
             <div class="w3-card-2 w3-round w3-white w3-center">
                 <div class="w3-container">
-                    <p>Eventos Proximos:</p>
-                    <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-                    <p><strong>Holiday</strong></p>
-                    <p>Friday 15:00</p>
-                    <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+                    <p>Ultimo Video subido:</p>
+                    <img src="/w3images/forest.jpg" alt="{{ video.descripcion }}" style="width:100%;">
+                    <p><strong>{{ video.nombre }}</strong></p>
+                    <p>{{ video.fecha_publicacion }}</p>
+                    <p><button class="w3-button w3-block w3-theme-l4">Ver</button></p>
                 </div>
             </div>
             <br>
-
-            <div class="w3-card-2 w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <p>Solicitud de Amigo</p>
-                    <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-                    <span>Jane Doe</span>
-                    <div class="w3-row w3-opacity">
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-                        </div>
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <br>
 
@@ -216,6 +197,12 @@
          x.className = x.className.replace(" w3-show", "");
      }
  }
+</script>
+
+<script type="text/javascript">
+ document.getElementById("redirect").onclick = function () {
+     location.href = "/list";
+ };
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

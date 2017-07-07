@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^avatar/', include('avatar.urls')),
     url(r'^$', views.video_list, name='video_list'),
     url(r'^list/$', views.list, name='list'),
+    url(r'^categoria/(?P<cat>[0-9]+)/$', views.categoria_list, name="ymc.views.video_categoria"),
 ]
