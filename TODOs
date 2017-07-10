@@ -1,0 +1,23 @@
+Feedback
+--------
+
+Me gusta mucho la interfaz que lograron y como funciona en general el proyecto.
+Hay varios lugares en donde estaría bueno extenderse para lograr un producto
+más cerrado. En particular, no está bueno tener features a la mitad.
+
+Por ejemplo, las secciones "Mis grupos" o "Mis eventos", si no van a formar parte
+de la app, mejor volarlo de la UI.
+
+En ese sentido propongo la siguiente lista de elementos para realizar:
+
+TODO
+----
+
+* La sección de "Mis videos" debería listar solo los videos del usuario actualmente logeado
+* Al dar click sobre uno de los videos de "Mis videos" debería ir a una pantalla similar a la del listado, pero donde se muestre solo un video.
+* Estilizar la pantalla de login para que esté acorde al resto de la aplicación.
+* Estilizar la pantalla de cambio de avatar para que esté acorde al resto de la aplicación.
+* Permitir la visualización de videos incluso si no se está logeado, pero sin mostrar la info del usuario actual.
+* Redirigir el logout a la pantalla principal.
+* Eliminar de la barra de navegación principal las notificaciones y correos.
+* Mostrar el último video subido de posta.
