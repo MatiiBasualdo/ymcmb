@@ -30,6 +30,7 @@
                         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
                     </div>
                 </div>
+                {% if user.is_authenticated %}
                 <a href="{% url 'avatar_change' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" aria-hidden="true" title="Mensajes"><i class="fa fa-envelope"></i></a>
                 <div class="w3-dropdown-hover w3-hide-small w3-right">
                     <button class="w3-button w3-padding-large" title="Mi Cuenta"><img src="{% avatar_url user 300 %}" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></button>
@@ -38,16 +39,9 @@
                         <a href="/logout" class="w3-bar-item w3-button">Cerrar Sesion</a>
                     </div>
                 </div>
+                {% endif %}
+                </div>
             </div>
-</div>
-
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Mi Perfil</a>
-</div>
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
